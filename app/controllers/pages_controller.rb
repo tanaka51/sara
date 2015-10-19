@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :set_wiki
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   # GET /pages
@@ -28,7 +29,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to [@wiki, @page], notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to [@wiki, @page], notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -62,13 +63,17 @@ class PagesController < ApplicationController
   end
 
   private
+    def set_wiki
+      @wiki = Wiki.find_by!(blob: params[:wiki_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_page
-      @page = Page.find(params[:id])
+      @page = Page.find_by!(blob: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:blob, :name, :content, :wiki_id)
+      params.require(:page).permit(:blob, :name, :content, :wiki_id).merge(wiki: @wiki)
     end
 end

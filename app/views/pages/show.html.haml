@@ -8,9 +8,6 @@
 %p
   %strong Content:
   = @page.content
-%p
-  %strong Wiki:
-  = @page.wiki
-= link_to 'Edit', edit_page_path(@page)
+= link_to 'Edit', edit_wiki_page_path(@wiki, @page)
 |
-= link_to 'Back', pages_path
+= link_to 'Back', wiki_pages_path

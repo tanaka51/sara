@@ -1,4 +1,4 @@
-= form_for(@page) do |f|
+= form_for([@wiki, @page]) do |f|
   - if @page.errors.any?
     #error_explanation
       %h2
@@ -19,9 +19,5 @@
     = f.label :content
     %br/
     = f.text_area :content
-  .field
-    = f.label :wiki_id
-    %br/
-    = f.text_field :wiki_id
   .actions
     = f.submit

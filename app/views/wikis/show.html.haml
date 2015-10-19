@@ -5,6 +5,9 @@
 %p
   %strong Name:
   = @wiki.name
+
+= link_to 'make a page', new_wiki_page_path(@wiki)
+|
 = link_to 'Edit', edit_wiki_path(@wiki)
 |
 = link_to 'Back', wikis_path
