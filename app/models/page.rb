@@ -11,4 +11,9 @@ class Page < ActiveRecord::Base
   def to_param
     blob
   end
+
+  def blob=(value)
+    # 0-9, a-z, A-Z, - 以外はすべて `_` にする
+    super(value.gsub(/[^[0-9a-zA-Z\-]]/, ?_))
+  end
 end

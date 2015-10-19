@@ -1,13 +1,8 @@
 %p#notice= notice
-%p
-  %strong Blob:
-  = @page.blob
-%p
-  %strong Name:
-  = @page.name
-%p
-  %strong Content:
-  = @page.content
+
+.content
+  ~ markdown(@wiki, @page.content)
+
 = link_to 'Edit', edit_wiki_page_path(@wiki, @page)
 |
-= link_to 'Back', wiki_pages_path
+= link_to 'Back', wiki_path(@wiki)

@@ -15,7 +15,10 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
+    @page = Page.new(
+      name: params[:name],
+      blob: params[:blob]
+    )
   end
 
   # GET /pages/1/edit

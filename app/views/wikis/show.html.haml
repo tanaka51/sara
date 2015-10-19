@@ -1,10 +1,11 @@
 %p#notice= notice
 %p
-  %strong Blob:
-  = @wiki.blob
-%p
   %strong Name:
   = @wiki.name
+
+- @wiki.pages.each do |page|
+  %p
+    = link_to page.name, wiki_page_path(@wiki, page)
 
 = link_to 'make a page', new_wiki_page_path(@wiki)
 |
