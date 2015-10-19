@@ -3,4 +3,8 @@ class Wiki < ActiveRecord::Base
 
   validates :blob, presence: true, length: { maximum: 255 }, uniqueness: true
   validates :name, presence: true, length: { maximum: 255 }
+
+  def to_param
+    blob
+  end
 end
