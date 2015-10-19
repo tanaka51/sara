@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Blob:
+  = @wiki.blob
+%p
+  %strong Name:
+  = @wiki.name
+= link_to 'Edit', edit_wiki_path(@wiki)
+|
+= link_to 'Back', wikis_path
