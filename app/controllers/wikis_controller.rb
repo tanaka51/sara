@@ -62,13 +62,13 @@ class WikisController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wiki
-      @wiki = Wiki.find_by!(blob: params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_wiki
+    @wiki = Wiki.find_by!(blob: params[:id] || params[:wiki_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def wiki_params
-      params.require(:wiki).permit(:blob, :name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def wiki_params
+    params.require(:wiki).permit(:blob, :name)
+  end
 end

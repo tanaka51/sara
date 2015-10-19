@@ -2,12 +2,6 @@ class PagesController < ApplicationController
   before_action :set_wiki
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
-  # GET /pages
-  # GET /pages.json
-  def index
-    @pages = Page.all
-  end
-
   # GET /pages/1
   # GET /pages/1.json
   def show
@@ -66,17 +60,17 @@ class PagesController < ApplicationController
   end
 
   private
-    def set_wiki
-      @wiki = Wiki.find_by!(blob: params[:wiki_id])
-    end
+  def set_wiki
+    @wiki = Wiki.find_by!(blob: params[:wiki_id])
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find_by!(blob: params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_page
+    @page = Page.find_by!(blob: params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def page_params
-      params.require(:page).permit(:blob, :name, :content, :wiki_id).merge(wiki: @wiki)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def page_params
+    params.require(:page).permit(:blob, :name, :content, :wiki_id).merge(wiki: @wiki)
+  end
 end
