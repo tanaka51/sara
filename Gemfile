@@ -8,6 +8,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
+gem 'github-markup'
+gem 'redcarpet'
 
 group :development do
   gem 'byebug', group: :test
