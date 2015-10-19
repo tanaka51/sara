@@ -1,0 +1,25 @@
+<%= form_for(@wiki) do |f| %>
+  <% if @wiki.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
+
+      <ul>
+      <% @wiki.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :blob %><br>
+    <%= f.text_field :blob %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
