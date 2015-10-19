@@ -14,6 +14,6 @@ class Page < ActiveRecord::Base
 
   def blob=(value)
     # 0-9, a-z, A-Z, - 以外はすべて `_` にする
-    super(value.gsub(/[^[0-9a-zA-Z\-]]/, ?_))
+    super(value.try(:gsub, /[^[0-9a-zA-Z\-]]/, ?_))
   end
 end
