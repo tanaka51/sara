@@ -12,6 +12,10 @@ gem 'sqlite3'
 gem 'tapp'
 gem 'uglifier', '>= 1.3.0'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-pure'
+end
+
 group :development do
   gem 'byebug', group: :test
   gem 'erb2haml'
