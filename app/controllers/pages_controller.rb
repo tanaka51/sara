@@ -68,11 +68,11 @@ class PagesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_page
-    @page = Page.find_by!(blob: params[:id])
+    @page = @wiki.pages.find_by!(blob: params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def page_params
-    params.require(:page).permit(:blob, :name, :content, :wiki_id).merge(wiki: @wiki)
+    params.require(:page).permit(:blob, :name, :content)
   end
 end

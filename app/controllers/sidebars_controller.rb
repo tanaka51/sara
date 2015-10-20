@@ -26,6 +26,6 @@ class SidebarsController < ApplicationController
   end
 
   def page_params
-    params.require(:sidebar).permit(:content).merge(wiki: @wiki)
+    params.require(:sidebar).permit(:content)
   end
 end
