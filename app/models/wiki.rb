@@ -7,6 +7,7 @@ class Wiki < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 255 }
 
   after_create :create_welcome_page
+  after_create :create_sidebar
 
   def to_param
     blob
@@ -15,7 +16,7 @@ class Wiki < ActiveRecord::Base
   private
 
   def create_welcome_page
-    pages.create(
+    pages.create!(
       blob: 'welcome',
       name: 'Welcome',
       content: <<MARKDOWN
@@ -29,6 +30,16 @@ class Wiki < ActiveRecord::Base
 以下にお役立ち情報を載せますので、ご活用ください(TODO):
 - 書式について(markdown)
 - 絵文字
+MARKDOWN
+    )
+  end
+
+  def create_sidebar
+    sidebar.create!(
+      content: <<MARKDOWN
+各 wiki にひとつずつ、サイドバーがついてきます。
+各ページで使われる markdown がそのまま使えます。
+グローバルナビゲーションや、ブックマークとして便利に使ってください。
 MARKDOWN
     )
   end

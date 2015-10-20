@@ -1,0 +1,26 @@
+= render 'shared/wiki_side'
+
+.header.markdown-content-header
+  %h1 サイドバーの編集
+
+.markdown-content-body
+  = form_for([@wiki, @sidebar], html: { class: 'pure-form pure-form-stacked' }) do |f|
+    - if @sidebar.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@sidebar.errors.count, "error")
+          prohibited this page from being saved:
+        %ul
+          - @sidebar.errors.full_messages.each do |message|
+            %li= message
+    %fieldset
+      .pure-g
+        .pure-u-1-2
+          = f.label :content
+          = f.text_area :content, class: 'pure-input-1', rows: 30
+
+        .pure-u-1-2
+          %p
+            ｺｺにﾌﾟﾚﾋﾞｭｰされるﾖﾃｲ
+
+      = f.submit class: 'pure-button pure-button-primary'

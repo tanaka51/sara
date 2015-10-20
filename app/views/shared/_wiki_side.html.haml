@@ -10,7 +10,7 @@
       .pure-u-1-4
         = link_to '一覧', wiki_pages_path(@wiki), class: 'pure-button button-small'
       .pure-u-1-2
-        = link_to 'サイドバーの編集', wiki_pages_path(@wiki), class: 'pure-button button-small'
+        = link_to 'サイドバーの編集', edit_wiki_sidebar_path(@wiki), class: 'pure-button button-small'
 
   .side-content-body
-    ~ markdown(@wiki, "サイドバー！自由に編集できる予定\n1 wiki 1 sidebar")
+    ~ markdown(@wiki, @wiki.sidebar.content)

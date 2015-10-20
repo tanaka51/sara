@@ -16,6 +16,7 @@ module MarkdownHelper
     end
 
     def postprocess(full_document)
+      # wiki link 処理
       regex = /\[\[(.*?)(\|(.*))?\]\]/
       full_document.gsub(regex) {
         target_name = $1
@@ -30,7 +31,7 @@ module MarkdownHelper
                 [wiki_page_path(@wiki, page), '']
               else
                 # TODO pass the name
-                [new_wiki_page_path(@wiki, name: target_name), 'new-page']
+                [new_wiki_page_path(@wiki, name: target_name, blob: Page.urlnize(target_name)), 'new-page']
               end
             else
               # [[aaa|bbb]] の形
