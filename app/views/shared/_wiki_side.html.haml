@@ -1,6 +1,16 @@
 = content_for :side do
-  %h1.markdown-content-title
-    = @wiki.name
-    's wiki
-  .markdown-content-body
+  .side-content-header
+    %h1.side-content-title
+      = @wiki.name
+      wiki
+
+    .pure-g
+      .pure-u-1-4
+        = link_to '新規', new_wiki_page_path(@wiki), class: 'pure-button button-small'
+      .pure-u-1-4
+        = link_to '一覧', wiki_pages_path(@wiki), class: 'pure-button button-small'
+      .pure-u-1-2
+        = link_to 'サイドバーの編集', wiki_pages_path(@wiki), class: 'pure-button button-small'
+
+  .side-content-body
     ~ markdown(@wiki, "サイドバー！自由に編集できる予定\n1 wiki 1 sidebar")
