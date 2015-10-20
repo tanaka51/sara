@@ -1,5 +1,7 @@
-%h1 Editing Page
-= render 'form'
-= link_to 'Show', [@wiki, @page]
-|
-= link_to 'Back', wiki_path(@wiki)
+= render 'shared/wiki_side'
+
+.header.markdown-content-header
+  %h1 編集
+
+.markdown-content-body
+  = render 'form'

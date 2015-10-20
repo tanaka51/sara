@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+  layout 'page', only: %i(show)
+
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
   # GET /wikis
@@ -10,6 +12,7 @@ class WikisController < ApplicationController
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    redirect_to wiki_page_path(@wiki, @wiki.pages.welcome)
   end
 
   # GET /wikis/new
@@ -28,7 +31,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
+        format.html { redirect_to wiki_page_path(@wiki, @wiki.pages.welcome) }
         format.json { render :show, status: :created, location: @wiki }
       else
         format.html { render :new }

@@ -34,8 +34,8 @@ module MarkdownHelper
               end
             else
               # [[aaa|bbb]] の形
-              page = @wiki.pages.find_by(blob: target_blob)
-              if page = @wiki.pages.find_by(blob: target_blob)
+              page = @wiki.pages.find_by(blob: Page.urlnize(target_blob))
+              if page
                 [wiki_page_path(@wiki, page), '']
               else
                 # TODO pass the name and the blob

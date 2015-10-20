@@ -1,0 +1,33 @@
+#nav.pure-u
+  %a.nav-menu-button{href: "#"} Menu
+  .nav-inner
+    = link_to 'SARA', root_path, class: 'primary-button pure-button'
+    .pure-menu
+      %ul.pure-menu-list
+        %li.pure-menu-item
+          %a.pure-menu-link{href: "#"}
+            Inbox
+            %span.email-count (2)
+        %li.pure-menu-item
+          %a.pure-menu-link{href: "#"} Important
+        %li.pure-menu-item
+          %a.pure-menu-link{href: "#"} Sent
+        %li.pure-menu-item
+          %a.pure-menu-link{href: "#"} Drafts
+        %li.pure-menu-item
+          %a.pure-menu-link{href: "#"} Trash
+
+        -# TODO 将来的にお気に入りとかで使えそう
+        -# %li.pure-menu-heading Labels
+        -# %li.pure-menu-item
+        -#   %a.pure-menu-link{href: "#"}
+        -#     %span.email-label-personal>
+        -#     Personal
+        -# %li.pure-menu-item
+        -#   %a.pure-menu-link{href: "#"}
+        -#     %span.email-label-work>
+        -#     Work
+        -# %li.pure-menu-item
+        -#   %a.pure-menu-link{href: "#"}
+        -#     %span.email-label-travel>
+        -#     Travel

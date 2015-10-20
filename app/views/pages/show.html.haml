@@ -1,8 +1,16 @@
-%p#notice= notice
+= render 'shared/wiki_side'
 
-.content
+.markdown-content-header.pure-g
+  .pure-u-1-2
+    %h1.markdown-content-title= @page.name
+    %p.markdown-content-subtitle
+      From
+      %a Tilo Mitra
+      at
+      %span= @page.updated_at
+  .markdown-content-controls.pure-u-1-2
+    = link_to 'edit', edit_wiki_page_path(@wiki, @page), class: 'secondary-button pure-button'
+    %button.pure-button.pure-button-disabled star
+    %button.pure-button.pure-button-disabled comments
+.markdown-content-body
   ~ markdown(@wiki, @page.content)
-
-= link_to 'Edit', edit_wiki_page_path(@wiki, @page)
-|
-= link_to 'Back', wiki_path(@wiki)

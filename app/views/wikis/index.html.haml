@@ -1,18 +1,14 @@
-%p#notice= notice
-%h1 Listing Wikis
-%table
-  %thead
-    %tr
-      %th Blob
-      %th Name
-      %th{:colspan => "3"}
-  %tbody
-    - @wikis.each do |wiki|
-      %tr
-        %td= wiki.blob
-        %td= wiki.name
-        %td= link_to 'Show', wiki
-        %td= link_to 'Edit', edit_wiki_path(wiki)
-        %td= link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Wiki', new_wiki_path
+.header
+  %h1
+    wikis
+  %h2
+    here is many wikis
+= link_to 'New Wiki', new_wiki_path, class: 'pure-button pure-button-primary'
+
+- @wikis.each do |wiki|
+  .wiki-list.pure-g
+    .pure-u-1-2
+      %h2
+        = link_to wiki.name, wiki_path(wiki)
+    .pure-u-1-2
+      = link_to 'edit', edit_wiki_path(wiki), class: 'pure-button'

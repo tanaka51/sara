@@ -1,4 +1,4 @@
-= form_for([@wiki, @page]) do |f|
+= form_for([@wiki, @page], html: { class: 'pure-form pure-form-stacked' }) do |f|
   - if @page.errors.any?
     #error_explanation
       %h2
@@ -7,17 +7,23 @@
       %ul
         - @page.errors.full_messages.each do |message|
           %li= message
-  .field
-    = f.label :blob
-    %br/
-    = f.text_field :blob
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :content
-    %br/
-    = f.text_area :content
-  .actions
-    = f.submit
+  %fieldset
+    .pure-g
+      .pure-u-1-2
+        = f.label :name
+        = f.text_field :name, class: 'pure-input-2-3'
+
+      .pure-u-1-2
+        = f.label :blob, 'URL'
+        = f.text_field :blob, class: 'pure-input-2-3'
+
+    .pure-g
+      .pure-u-1-2
+        = f.label :content
+        = f.text_area :content, class: 'pure-input-1', rows: 30
+
+      .pure-u-1-2
+        %p
+          ｺｺにﾌﾟﾚﾋﾞｭｰされるﾖﾃｲ
+
+    = f.submit class: 'pure-button pure-button-primary'

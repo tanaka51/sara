@@ -5,6 +5,7 @@
   %body
     #layout.pure-g
       = render 'shared/nav'
+      #side.pure-u-1
+        = yield(:side)
       #main.pure-u-1
-        .main-content
-          = yield
+        = yield

@@ -1,0 +1,6 @@
+= content_for :side do
+  %h1.markdown-content-title
+    = @wiki.name
+    's wiki
+  .markdown-content-body
+    ~ markdown(@wiki, "サイドバー！自由に編集できる予定\n1 wiki 1 sidebar")

@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  layout 'page'
+
   before_action :set_wiki
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
