@@ -35,10 +35,9 @@ MARKDOWN
   end
 
   def create_sidebar
-    sidebar.create!(
+    create_sidebar!(
       content: <<MARKDOWN
 各 wiki にひとつずつ、サイドバーがついてきます。
-各ページで使われる markdown がそのまま使えます。
 グローバルナビゲーションや、ブックマークとして便利に使ってください。
 MARKDOWN
     )
