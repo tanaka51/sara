@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019160046) do
+ActiveRecord::Schema.define(version: 20151020173704) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "blob",                    null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20151019160046) do
 
   add_index "pages", ["blob", "wiki_id"], name: "index_pages_on_blob_and_wiki_id", unique: true
   add_index "pages", ["wiki_id"], name: "index_pages_on_wiki_id"
+
+  create_table "sidebars", force: :cascade do |t|
+    t.integer  "wiki_id"
+    t.text     "content",    default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "sidebars", ["wiki_id"], name: "index_sidebars_on_wiki_id"
 
   create_table "wikis", force: :cascade do |t|
     t.string   "blob",                    null: false
