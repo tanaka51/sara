@@ -11,7 +11,7 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new(
+    @page = @wiki.pages.build(
       name: params[:name],
       blob: params[:blob]
     )
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(page_params)
+    @page = @wiki.pages.build(page_params)
 
     respond_to do |format|
       if @page.save
